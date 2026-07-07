@@ -11,10 +11,10 @@ public class ShortUrl {
     public ShortUrl() {
     }
 
-    public ShortUrl(String originalUrl, Long id, String shortenedUrl, LocalDateTime createdAt, Long clickCount) {
+    public ShortUrl(String originalUrl, Long id, String shortCode, LocalDateTime createdAt, Long clickCount) {
         this.originalUrl = originalUrl;
         this.id = id;
-        this.shortenedUrl = shortenedUrl;
+        this.shortCode = shortCode;
         this.createdAt = createdAt;
         this.clickCount = clickCount;
     }
@@ -27,15 +27,14 @@ public class ShortUrl {
     @Column(name = "original_url", nullable = false)
     private String originalUrl;
 
-    @Column(name = "shortened_url")
-    private String shortenedUrl;
+    @Column(name = "short_code")
+    private String shortCode;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @Column(name = "click_count")
     private Long clickCount;
-
 
     public Long getId() {
         return id;
@@ -53,12 +52,12 @@ public class ShortUrl {
         this.originalUrl = originalUrl;
     }
 
-    public String getShortenedUrl() {
-        return shortenedUrl;
+    public String getShortCode() {
+        return shortCode;
     }
 
-    public void setShortenedUrl(String shortenedUrl) {
-        this.shortenedUrl = shortenedUrl;
+    public void setShortCode(String shortCode) {
+        this.shortCode = shortCode;
     }
 
     public LocalDateTime getCreatedAt() {
