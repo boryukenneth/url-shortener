@@ -1,5 +1,6 @@
 package com.kenneth.urlshortener.service.impl;
 
+import com.kenneth.urlshortener.domain.CreateShortUrlRequest;
 import com.kenneth.urlshortener.domain.ShortUrl;
 import com.kenneth.urlshortener.repository.ShortUrlRepository;
 import com.kenneth.urlshortener.service.ShortUrlService;
@@ -22,7 +23,7 @@ public class ShortUrlServiceImpl implements ShortUrlService {
 
 
     @Override
-    public ShortUrl createShortUrl(String originalUrl) {
+    public ShortUrl createShortUrl(CreateShortUrlRequest request) {
         LocalDateTime now = LocalDateTime.now();
         String shortCode;
 
@@ -34,7 +35,7 @@ public class ShortUrlServiceImpl implements ShortUrlService {
         );
 
         ShortUrl shortUrl = new ShortUrl(
-                originalUrl,
+                request.originalUrl(),
                 null,
                 shortCode,
                 now,
