@@ -72,6 +72,10 @@ public class ShortUrl {
         return clickCount;
     }
 
+    public void incrementClickCount() {
+        this.clickCount++;
+    }
+
     public void setClickCount(Long clickCount) {
         this.clickCount = clickCount;
     }

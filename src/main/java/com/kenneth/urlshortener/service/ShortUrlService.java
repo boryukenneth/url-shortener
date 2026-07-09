@@ -7,4 +7,6 @@ public interface ShortUrlService {
 
     ShortUrl createShortUrl(CreateShortUrlRequest request);
 
+    ShortUrl redirect (String shortCode);
+
 }

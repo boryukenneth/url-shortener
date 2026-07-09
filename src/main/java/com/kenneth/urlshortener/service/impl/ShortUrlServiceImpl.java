@@ -2,12 +2,14 @@ package com.kenneth.urlshortener.service.impl;
 
 import com.kenneth.urlshortener.domain.CreateShortUrlRequest;
 import com.kenneth.urlshortener.domain.ShortUrl;
+import com.kenneth.urlshortener.exception.ShortUrlNotFoundException;
 import com.kenneth.urlshortener.repository.ShortUrlRepository;
 import com.kenneth.urlshortener.service.ShortUrlService;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 
 @Service
@@ -57,4 +59,12 @@ public class ShortUrlServiceImpl implements ShortUrlService {
 
         return shortCode.toString();
     }
+
+    @Override
+    public ShortUrl redirect(String shortCode) {
+        ShortUrl shortUrl = shortUrlRepository.findByShortCode(shortCode).orElseThrow(() -> new ShortUrlNotFoundException(shortCode));
+        shortUrl.incrementClickCount();
+        return shortUrlRepository.save(shortUrl);
+    }
+
 }
